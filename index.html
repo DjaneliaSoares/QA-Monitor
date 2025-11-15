@@ -59,10 +59,10 @@
   <div class="container">
     <h2>Simulador de Login</h2>
     <label>Email</label>
-    <input type="text" id="email" placeholder="exemplo@email.com" />
+    <input type="text" required="Email é obrigatório" id="email" placeholder="exemplo@email.com" />
 
     <label>Senha</label>
-    <input type="password" id="password" placeholder="********" />
+    <input type="password" required="Senha é obrigatório" id="password" placeholder="********" />
 
     <button onclick="login()">Entrar</button>
 
@@ -78,12 +78,18 @@
       msg.style.display = 'block';
 
       // validações simuladas
-      if (!email || !password) {
+      if (!email ) {
         msg.className = 'message error';
-        msg.textContent = 'Preencha todos os campos.';
+        msg.textContent = 'O email é obrigatório.';
+        return;
+      }
+       if (!password ) {
+        msg.className = 'message error';
+        msg.textContent = 'A senha é obrigatório.';
         return;
       }
 
+      
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         msg.className = 'message error';
@@ -106,7 +112,7 @@
         }, 1500);
       } else {
         msg.className = 'message error';
-        msg.textContent = 'Credenciais inválidas.';
+        msg.textContent = 'Email ou senha inválidos.';
       }
     }
   </script>
