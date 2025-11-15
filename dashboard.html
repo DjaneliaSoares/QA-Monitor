@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f6fb;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    /* MENU LATERAL */
+    .sidebar {
+      width: 230px;
+      background: #002b80;
+      height: 100vh;
+      color: white;
+      padding-top: 30px;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 22px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #e6e6e6;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .sidebar a:hover {
+      background: #0038b3;
+    }
+
+    /* CONTEÚDO PRINCIPAL */
+    .main {
+      margin-left: 230px;
+      width: calc(100% - 230px);
+      padding: 30px;
+    }
+
+    header {
+      background: #003399;
+      padding: 20px;
+      color: white;
+      font-size: 22px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    /* CARDS DE ESTATÍSTICAS */
+    .stats-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      width: 200px;
+      flex: 1;
+      text-align: center;
+      min-width: 200px;
+    }
+
+    .card h3 {
+      margin: 0;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .card p {
+      font-size: 24px;
+      font-weight: bold;
+      color: #003399;
+    }
+
+    /* BOTÃO */
+    button {
+      padding: 12px 25px;
+      background: #0066ff;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-top: 30px;
+    }
+    button:hover {
+      background: #0047b3;
+    }
+  </style>
+</head>
+<body>
+
+<!-- MENU LATERAL -->
+<div class="sidebar">
+  <h2>Menu</h2>
+  <a href="#">Dashboard</a>
+  <a href="#">Estatísticas</a>
+  <a href="#">Utilizadores</a>
+  <a href="#">Configurações</a>
+  <a href="#" onclick="voltar()">Sair</a>
+</div>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="main">
+  <header>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <span>Dashboard</span>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <img src="https://ui-avatars.com/api/?name=Usuário+Teste&background=003399&color=fff&size=60" 
+             alt="Foto de Perfil" 
+             style="width:45px; height:45px; border-radius:50%; border:2px solid white;" />
+        <strong>Usuário Teste</strong>
+      </div>
+    </div>
+  </header>
+
+  <h2>Bem-vindo ao Sistema</h2>
+  <p>Login realizado com sucesso! Aqui tens uma simulação de estatísticas.</p>
+
+  <div class="stats-container">
+    <div class="card">
+      <h3>Logins Hoje</h3>
+      <p>42</p>
+    </div>
+
+    <div class="card">
+      <h3>Utilizadores Activos</h3>
+      <p>118</p>
+    </div>
+
+    <div class="card">
+      <h3>Erros Detectados</h3>
+      <p>3</p>
+    </div>
+
+    <div class="card">
+      <h3>Tempo Médio</h3>
+      <p>320ms</p>
+    </div>
+  </div>
+
+ 
+</div>
+
+<script>
+  function voltar() {
+    window.location.href = 'login.html';
+  }
+</script>
+
+</body>
+</html>

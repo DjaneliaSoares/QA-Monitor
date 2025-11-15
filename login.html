@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Login - QA Testes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #0066ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    button:hover { background: #0047b3; }
+    .message {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
+    .error { background: #ffcccc; color: #a30000; }
+    .success { background: #ccffcc; color: #006600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Simulador de Login</h2>
+    <label>Email</label>
+    <input type="text" id="email" placeholder="exemplo@email.com" />
+
+    <label>Senha</label>
+    <input type="password" id="password" placeholder="********" />
+
+    <button onclick="login()">Entrar</button>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const msg = document.getElementById('message');
+
+      msg.style.display = 'block';
+
+      // validações simuladas
+      if (!email || !password) {
+        msg.className = 'message error';
+        msg.textContent = 'Preencha todos os campos.';
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        msg.className = 'message error';
+        msg.textContent = 'Email inválido.';
+        return;
+      }
+
+      if (password.length < 8) {
+        msg.className = 'message error';
+        msg.textContent = 'A senha deve ter pelo menos 8 caracteres.';
+        return;
+      }
+
+      // credenciais válidas simuladas
+      if (email === 'usuario@exemplo.com' && password === 'senhaValida123') {
+        msg.className = 'message success';
+        msg.textContent = 'Login bem-sucedido! Redirecionando...';
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 1500);
+      } else {
+        msg.className = 'message error';
+        msg.textContent = 'Credenciais inválidas.';
+      }
+    }
+  </script>
+</body>
+</html>
