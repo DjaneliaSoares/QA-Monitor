@@ -87,7 +87,7 @@
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         msg.className = 'message error';
-        msg.textContent = 'Email inválido.';
+        msg.textContent = 'Formato de email inválido.';
         return;
       }
 
