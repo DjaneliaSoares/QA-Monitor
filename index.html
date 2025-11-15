@@ -59,10 +59,10 @@
   <div class="container">
     <h2>Simulador de Login</h2>
     <label>Email</label>
-    <input type="text" required="Email é obrigatório" id="email" placeholder="exemplo@email.com" />
+    <input type="text" id="email" placeholder="exemplo@email.com" />
 
     <label>Senha</label>
-    <input type="password" required="Senha é obrigatório" id="password" placeholder="********" />
+    <input type="password"  id="password" placeholder="********" />
 
     <button onclick="login()">Entrar</button>
 
@@ -70,51 +70,63 @@
   </div>
 
   <script>
-    function login() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+  function login() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
       const msg = document.getElementById('message');
 
-      msg.style.display = 'block';
+  msg.style.display = 'block';
 
-      // validações simuladas
-      if (!email ) {
-        msg.className = 'message error';
-        msg.textContent = 'O email é obrigatório.';
-        return;
-      }
-       if (!password ) {
-        msg.className = 'message error';
-        msg.textContent = 'A senha é obrigatório.';
-        return;
-      }
+  // 1. Verifica se ambos os campos estão vazios
+  if (!email && !password) {
+    msg.className = 'message error';
+    msg.textContent = 'Por favor, preencha o email e a senha.';
+    return;
+  }
 
-      
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        msg.className = 'message error';
-        msg.textContent = 'Formato de email inválido.';
-        return;
-      }
+  // 2. Verifica se email está vazio
+  if (!email) {
+    msg.className = 'message error';
+    msg.textContent = 'O email é obrigatório.';
+    return;
+  }
 
-      if (password.length < 8) {
-        msg.className = 'message error';
-        msg.textContent = 'A senha deve ter pelo menos 8 caracteres.';
-        return;
-      }
+  // 3. Verifica se senha está vazia
+  if (!password) {
+    msg.className = 'message error';
+    msg.textContent = 'A senha é obrigatória.';
+    return;
+  }
 
-      // credenciais válidas simuladas
-      if (email === 'usuario@exemplo.com' && password === 'senhaValida123') {
-        msg.className = 'message success';
-        msg.textContent = 'Login bem-sucedido! Redirecionando...';
-        setTimeout(() => {
-          window.location.href = 'dashboard.html';
-        }, 1500);
-      } else {
-        msg.className = 'message error';
-        msg.textContent = 'Email ou senha inválidos.';
-      }
-    }
-  </script>
+  // 4. Valida formato de email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    msg.className = 'message error';
+    msg.textContent = 'Formato de email inválido.';
+    return;
+  }
+
+  // 5. Valida tamanho da senha
+  if (password.length < 8) {
+    msg.className = 'message error';
+    msg.textContent = 'A senha deve ter pelo menos 8 caracteres.';
+    return;
+  }
+
+  // 6. Verifica credenciais válidas simuladas
+  if (email === 'usuario@exemplo.com' && password === 'senhaValida123') {
+    msg.className = 'message success';
+    msg.textContent = 'Login bem-sucedido! Redirecionando...';
+    setTimeout(() => {
+      window.location.href = 'dashboard.html';
+    }, 1500);
+  } else {
+    msg.className = 'message error';
+    msg.textContent = 'Email ou senha inválidos.';
+  }
+}
+
+
+</script>
 </body>
 </html>
